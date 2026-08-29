@@ -6,7 +6,7 @@ on:
             validaImgDocker:
                 description: 'Validação da img escolhida'
                 required: false
-                default: 'alphine:latest'
+                default: 'alpine:latest'
                 type: string
 
 jobs:
@@ -36,5 +36,6 @@ jobs:
             - name: Scan com Docker Scout
               uses: docker/scout-action@v1
               with:
+                command: quickview,cves,recommendations,sbom
                 image: ${{ github.event.inputs.validaImgDocker }}
                 only-severities: critical,high
