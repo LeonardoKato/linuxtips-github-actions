@@ -24,6 +24,7 @@ jobs:
             run: docker images
 
           - uses: docker/scout-action@v1
+            id: docker-scout-cves
             with:
               command: cve
               image: $IMAGEM
