@@ -1,4 +1,4 @@
-name: Vendo arquivos compartilhados entre Steps
+name: Vendo arquivos compartilhados entre Jobs
 
 on:
     push:
@@ -13,12 +13,32 @@ jobs:
           run: cat /etc/os-release
 
         - name: Exibir msg
-          run: echo "Teste do meu primeiro workflow" > msg.txt
+          run: echo "Teste do meu primeiro workflow" > /home/ubuntu/msg.txt
+        
+        - uses: action/upload-artifact@v4
+          with:
+            name: strigus
+            path: /home/ubuntu/msg.txt
 
     job_2:
       runs-on: ubuntu-latest
       steps:
         - name: Another brick on the wall
           run: ls -lha
+
+        - uses: action/download-artifact@v4
+          with:
+            name: strigus
+            path: msg.txt  
+
+        - name: Ver conteudo do diretorio
+          run: ls -lha && ls ./strigus/
+
+        - name: Move Arquivo msg
+          run: mv strigus/msg.txt . && rm -rf ./strigus 
+        
+        - name: Another brick on the wall
+          run: ls -lha
+
         - name: Acessa arquivo msg
-          run: cat msg.txt
+          run: mv s/msg.txt
