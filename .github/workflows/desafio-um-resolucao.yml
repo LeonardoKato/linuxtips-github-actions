@@ -14,17 +14,18 @@ jobs:
         runs-on: ubuntu:latest
 
         steps:
+
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Baixa img do conteiner
+            - name: Baixa img do container
               run: |
-              docker pull ${{ github.event.inputs.validaImgDocker }}
+                    docker pull ${{ github.event.inputs.validaImgDocker }}
 
             - name: Leitura da Img
             run: |
-              IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1')
-              docker images | grep $IMG_NAME
+                    IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1')
+                    docker images | grep $IMG_NAME
 
             - name: Scan com Docker Scout
               uses: docker/scout-action@v1
