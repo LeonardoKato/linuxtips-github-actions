@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       imagem:
-        description: Informe a imagem a ser utilizada
+        description: 'Informe a imagem a ser utilizada'
         required: true
         type: string
 

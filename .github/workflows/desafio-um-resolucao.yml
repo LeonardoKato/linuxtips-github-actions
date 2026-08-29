@@ -1,0 +1,33 @@
+name: Validacao de Img de Container
+
+on:
+    workflow_dispatch:
+        inputs:
+            validaImgDocker:
+                description: 'Validação da img escolhida'
+                required: false
+                default: 'alphine:latest'
+                type: string
+
+jobs:
+    pipeline-si:
+        runs-on: ubuntu:latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Baixa img do conteiner
+              run: |
+              docker pull ${{ github.event.inputs.validaImgDocker }}
+
+            - name: Leitura da Img
+            run: |
+              IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1')
+              docker images | grep $IMG_NAME
+
+            - name: Scan com Docker Scout
+              uses: docker/scout-action@v1
+              with:
+                image: ${{ github.event.inputs.validaImgDocker }}
+                only-severities: critical,high
