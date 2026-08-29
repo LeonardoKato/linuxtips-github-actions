@@ -11,7 +11,7 @@ on:
 
 jobs:
     pipeline-si:
-        runs-on: ubuntu:latest
+        runs-on: ubuntu-latest
 
         steps:
 
@@ -23,7 +23,7 @@ jobs:
                     docker pull ${{ github.event.inputs.validaImgDocker }}
 
             - name: Leitura da Img
-            run: |
+              run: |
                     IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1')
                     docker images | grep $IMG_NAME
 
