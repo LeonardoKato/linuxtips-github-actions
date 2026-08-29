@@ -30,7 +30,7 @@ jobs:
 
             - name: Leitura da Img
               run: |
-                IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1')
+                IMG_NAME=$(echo "${{ github.event.inputs.validaImgDocker }}" | cut -d ':' -f 1)
                 docker images | grep $IMG_NAME
 
             - name: Scan com Docker Scout
