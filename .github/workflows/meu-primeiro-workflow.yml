@@ -1,0 +1,16 @@
+name: Primeiro Workflow
+
+on:
+    push:
+        branches:
+         - main
+
+jobs:
+    giropops:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Confere versao Ubuntu
+              run: cat /etc/os-release
+
+            - name: Exibir msg
+              run: echo "Teste do meu primeiro workflow"
