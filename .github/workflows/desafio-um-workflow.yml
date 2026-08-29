@@ -23,7 +23,7 @@ jobs:
           - name: Show
             run: docker images
 
-          - uses: docker/scout-action@1
+          - uses: docker/scout-action@v1
             with:
               command: cve
               image: $IMAGEM
