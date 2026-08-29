@@ -12,7 +12,7 @@ jobs:
     docker-image:
         runs-on: ubuntu-latest
         env:
-          IMAGE: ${{ inputs.imagem }}
+          IMAGEM: ${{ inputs.imagem }}
         steps:
           - name: Input
             run: echo "Usando a imagem $IMAGEM"
