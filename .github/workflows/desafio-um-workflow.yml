@@ -1,0 +1,24 @@
+name: Docker Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      imagem:
+        description: Informe a imagem a ser utilizada
+        required: true
+        type: string
+
+jobs:
+    docker-image:
+        runs-on: ubuntu-latest
+        env:
+          IMAGE: ${{ inputs.imagem }}
+        steps:
+          - name: Input
+            run: echo "Usando a imagem $IMAGEM"
+
+          - name: Pull
+            run: docker pull "$IMAGEM"
+
+          - name: Show
+            run: docker images
