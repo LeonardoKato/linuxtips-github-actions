@@ -1,3 +1,3 @@
 # linuxtips-github-actions
 
-## Iniiando os trabalhos
+## Iniciando os trabalhos
