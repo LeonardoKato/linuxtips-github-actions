@@ -1,0 +1,30 @@
+name: Docker Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      imagem:
+        description: 'Informe a imagem a ser utilizada'
+        required: true
+        type: string
+
+jobs:
+    docker-image:
+        runs-on: ubuntu-latest
+        env:
+          IMAGEM: ${{ inputs.imagem }}
+        steps:
+          - name: Input
+            run: echo "Usando a imagem $IMAGEM"
+
+          - name: Pull
+            run: docker pull "$IMAGEM"
+
+          - name: Show
+            run: docker images
+
+          - uses: docker/scout-action@v1
+            id: docker-scout-cves
+            with:
+              command: cve
+              image: $IMAGEM
