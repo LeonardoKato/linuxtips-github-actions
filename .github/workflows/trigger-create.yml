@@ -1,4 +1,4 @@
-name: Testando a regra de protection rule
+name: Testando a regra de trigger create
 
 on:
     branch_protection_rule:
