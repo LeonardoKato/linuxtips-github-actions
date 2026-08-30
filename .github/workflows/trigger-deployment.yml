@@ -3,7 +3,7 @@ name: Criando nosso trigger deployment
 on:
     deployment
 
-job:
+jobs:
     job-deployment:
         runs-on: ubuntu-latest
         steps:
