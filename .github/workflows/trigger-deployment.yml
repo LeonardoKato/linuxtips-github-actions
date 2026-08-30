@@ -1,4 +1,4 @@
-nome: Criando nosso trigger deployment
+name: Criando nosso trigger deployment
 
 on:
     deployment
