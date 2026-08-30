@@ -1,0 +1,13 @@
+name: Testando a regra de protection rule
+
+on:
+    branch_protection_rule:
+        types: [created, edited, deleted]
+
+jobs:
+    print-branch-or-tag-creation:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Aviso sobre criacao da branch ou tag
+              run: echo "Uma nova branch ou tag foi criada no repositório"
